@@ -1,0 +1,9 @@
+<?php
+
+namespace App\Repositories;
+use App\Repositories\Interfaces\{{repositoryInterfaceName}};
+
+class {{repositoryName}} implements {{repositoryInterfaceName}}
+{
+    // Add your repository methods here
+}

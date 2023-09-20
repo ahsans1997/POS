@@ -1,0 +1,26 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class UserDetails extends Model
+{
+    use HasFactory, SoftDeletes;
+
+    protected $fillable = [
+        'address',
+        'message',
+        'mobile_number',
+        'created_by',
+        'edited_by',
+        'user_status',
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+}
