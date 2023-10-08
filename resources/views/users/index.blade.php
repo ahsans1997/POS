@@ -3,9 +3,11 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <div class="add-user d-block" style="height: 65px;">
-                <a href="{{ route('users.create') }}" class="btn btn-info" style="float: right;">Add User</a>
-            </div>
+            @can('user-create')
+                <div class="add-user d-block" style="height: 65px;">
+                    <a href="{{ route('users.create') }}" class="btn btn-info" style="float: right;">Add User</a>
+                </div>
+            @endcan
             <div class="card">
                 <div class="card-header">
                     <h5 class="card-title mb-0">Basic Datatables</h5>
@@ -63,26 +65,34 @@
                                                 <i class="ri-more-fill align-middle"></i>
                                             </button>
                                             <ul class="dropdown-menu dropdown-menu-end">
-                                                <li><a href="{{ route('users.assignRole', $user->id) }}" class="dropdown-item"><i
-                                                            class="ri-eye-fill align-bottom me-2 text-muted"></i>Assign Role</a>
-                                                </li>
-                                                <li><a href="{{ route('users.edit', $user->id) }}"
-                                                        class="dropdown-item edit-item-btn"><i
-                                                            class="ri-pencil-fill align-bottom me-2 text-muted"></i>
-                                                        Edit</a>
-                                                </li>
-                                                <li>
-                                                    <form action="{{ route('users.destroy', $user->id) }}" method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <a class="dropdown-item remove-item-btn" href="#"
-                                                            onclick="event.preventDefault(); if (confirm('Are you sure you want to delete this user?')) this.closest('form').submit();">
-                                                            <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
-                                                            Delete
-                                                        </a>
-                                                    </form>
+                                                @can('user-role-assign')
+                                                    <li><a href="{{ route('users.assignRole', $user->id) }}" class="dropdown-item"><i
+                                                        class="ri-eye-fill align-bottom me-2 text-muted"></i>Assign Role</a>
+                                                    </li>
+                                                @endcan
+                                                
+                                                @can('user-edit')
+                                                    <li><a href="{{ route('users.edit', $user->id) }}"
+                                                            class="dropdown-item edit-item-btn"><i
+                                                                class="ri-pencil-fill align-bottom me-2 text-muted"></i>
+                                                            Edit</a>
+                                                    </li>
+                                                @endcan
 
-                                                </li>
+                                                @can('user-delete')
+                                                    <li>
+                                                        <form action="{{ route('users.destroy', $user->id) }}" method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <a class="dropdown-item remove-item-btn" href="#"
+                                                                onclick="event.preventDefault(); if (confirm('Are you sure you want to delete this user?')) this.closest('form').submit();">
+                                                                <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
+                                                                Delete
+                                                            </a>
+                                                        </form>
+                                                    </li>
+                                                @endcan
+
                                             </ul>
                                         </div>
                                     </td>

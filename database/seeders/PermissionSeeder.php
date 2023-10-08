@@ -14,13 +14,18 @@ class PermissionSeeder extends Seeder
     public function run(): void
     {
         $data =[
-            ['id' => 1, 'name' => 'dashboard',              'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
-            ['id' => 2, 'name' => 'products',               'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
-            ['id' => 3, 'name' => 'purchases',              'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
-            ['id' => 4, 'name' => 'sales',                  'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
-            ['id' => 5, 'name' => 'expenses',               'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
-            ['id' => 6, 'name' => 'peoples',                'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
-            ['id' => 7, 'name' => 'settings',               'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
+            ['id' => 1, 'name' => 'dashboard',                              'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
+            ['id' => 2, 'name' => 'products',                               'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
+            ['id' => 3, 'name' => 'purchases',                              'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
+            ['id' => 4, 'name' => 'sales',                                  'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
+            ['id' => 5, 'name' => 'expenses',                               'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
+            ['id' => 6, 'name' => 'peoples',                                'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
+            ['id' => 7, 'name' => 'settings',                               'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
+            ['id' => 8, 'name' => 'assign-permission-to-role',              'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
+            ['id' => 9, 'name' => 'user-role-assign',                       'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
+            ['id' => 10, 'name' => 'user-create',                           'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
+            ['id' => 11, 'name' => 'user-edit',                             'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
+            ['id' => 12, 'name' => 'user-delete',                           'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()],
         ];
         foreach ($data as $d) {
             if(DB::table('permissions')->where('name', $d['name'])->count() < 1){

@@ -15,7 +15,7 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:users-list|users-create|users-edit|users-delete', ['except' => ['index']]);
+        $this->middleware('permission:users-list|users-create|users-edit|users-delete|assign-permission-to-role', ['except' => ['index']]);
 
     }
     /**
