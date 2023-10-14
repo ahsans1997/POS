@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Setting;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class SettingController extends Controller
@@ -12,7 +13,9 @@ class SettingController extends Controller
      */
     public function index()
     {
-        //
+        return view('settings.index',[
+            'setting' => Setting::findOrFail(1)
+        ]);
     }
 
     /**
@@ -52,7 +55,22 @@ class SettingController extends Controller
      */
     public function update(Request $request, Setting $setting)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required|min:11|max:11',
+            'address' => 'required',
+        ]);
+        $setting = Setting::findOrFail($setting->id);
+        $setting->name = $request->name;
+        $setting->email = $request->email;
+        $setting->phone = $request->phone;
+        $setting->address = $request->address;
+        $setting->save();
+
+        Toastr::success('Setting Updated Successfully', 'Success');
+        return back();
+
     }
 
     /**

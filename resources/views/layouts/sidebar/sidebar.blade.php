@@ -147,12 +147,12 @@
 
             @can('settings')
                 <li class="nav-item">
-                    <a class="nav-link menu-link {{ request()->routeIs(['roles*']) ? 'collapsed active' : '' }}"
+                    <a class="nav-link menu-link {{ request()->routeIs(['roles*', 'setting*']) ? 'collapsed active' : '' }}"
                         href="#settings" data-bs-toggle="collapse" role="button" aria-expanded="false"
                         aria-controls="settings">
                         <i class="ri-settings-3-fill"></i> <span data-key="t-base-ui">Settings</span>
                     </a>
-                    <div class="collapse menu-dropdown {{ request()->routeIs(['roles*']) ? 'show' : '' }}" id="settings">
+                    <div class="collapse menu-dropdown {{ request()->routeIs(['roles*', 'setting*']) ? 'show' : '' }}" id="settings">
                         <div class="row">
                             <div class="col-lg-4">
                                 <ul class="nav nav-sm flex-column">
@@ -160,11 +160,10 @@
                                         <a href="" class="nav-link">Global Settings</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="" class="nav-link">Settings</a>
+                                        <a href="{{ route('setting.index') }}" class="nav-link {{ request()->routeIs('setting*') ? 'active' : '' }}">Settings</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ route('roles.index') }}"
-                                            class="nav-link {{ request()->routeIs('roles*') ? 'active' : '' }}">Role</a>
+                                        <a href="{{ route('roles.index') }}" class="nav-link {{ request()->routeIs('roles*') ? 'active' : '' }}">Role</a>
                                     </li>
                                 </ul>
                             </div>

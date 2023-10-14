@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,9 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::resource('roles', RoleController::class);
     Route::get('roles/assignPermission/{id}', [RoleController::class, 'assignPermission'])->name('roles.assignPermission');
     Route::post('roles/assignPermission/{id}', [RoleController::class, 'assignPermissionToRole'])->name('roles.assignPermissionToRole');
+
+    //Settings Route
+    Route::resource('setting', SettingController::class);
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
