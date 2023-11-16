@@ -24,6 +24,9 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 
+    require __DIR__.'/products.php';
+
+
     //User Route
     Route::resource('users', UserController::class);
     Route::get('users/assignRole/{id}', [UserController::class, 'assignRole'])->name('users.assignRole');
